@@ -5,6 +5,6 @@ export class AppController {
   @Get('users')
   getHello(): string {
     const name = 'Дамиан';
-    return `Привет, Меня зовут ${name}!`;
+    return `Привет Меня зовут ${name}!`;
   }
 }
