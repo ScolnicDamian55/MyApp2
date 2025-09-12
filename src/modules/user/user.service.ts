@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './create-user.dto';
 
 export interface User {
   id: number;

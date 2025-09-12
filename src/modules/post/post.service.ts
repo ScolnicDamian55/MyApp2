@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePostDto } from './create-post.dto';
 
 export interface PostEntity {
   id: number;

@@ -1,40 +1,36 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto } from './create-user.dto';
-import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { UserService, User } from './user.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users')
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @ApiOperation({ summary: 'Создать пользователя' })
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  create(@Body() createUserDto: CreateUserDto): User {
     return this.userService.create(createUserDto.name);
   }
 
-  @ApiOperation({ summary: 'Получить всех пользователей' })
   @Get()
-  findAll() {
+  findAll(): User[] {
     return this.userService.findAll();
   }
 
-  @ApiOperation({ summary: 'Получить пользователя по ID' })
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(Number(id));
+  findOne(@Param('id') id: string): User {
+    return this.userService.findOne(+id);
   }
 
-  @ApiOperation({ summary: 'Обновить пользователя' })
   @Put(':id')
-  update(@Param('id') id: string, @Body() createUserDto: CreateUserDto) {
-    return this.userService.update(Number(id), createUserDto.name);
+  update(@Param('id') id: string, @Body() createUserDto: CreateUserDto): User {
+    return this.userService.update(+id, createUserDto.name);
   }
 
-  @ApiOperation({ summary: 'Удалить пользователя' })
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.userService.remove(Number(id));
+    this.userService.remove(+id);
+    return { message: `User ${id} deleted` };
   }
 }
