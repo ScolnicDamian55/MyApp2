@@ -2,9 +2,9 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  @Get('users')
+  @Get('hello')
   getHello(): string {
     const name = 'Дамиан';
-    return `Привет Меня зовут ${name}!`;
+    return `Привет меня зовут ${name}!`;
   }
 }
