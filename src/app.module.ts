@@ -11,11 +11,11 @@ import { PostEntity } from './modules/post/post.entity';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',   // замени на свой логин
-      password: 'password',   // замени на свой пароль
-      database: 'mydb',       // замени на имя своей БД
+      username: 'postgres',  
+      password: 'password',   
+      database: 'mydb',      
       entities: [UserEntity, PostEntity],
-      synchronize: true,      // ⚠️ для разработки true (авто-создание таблиц)
+      synchronize: true,     
     }),
     UserModule,
     PostModule,
